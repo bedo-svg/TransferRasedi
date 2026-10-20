@@ -120,6 +120,7 @@ class FloatingService : Service() {
             textSize = 18f
             inputType = InputType.TYPE_CLASS_PHONE
             setSingleLine()
+        setSelectAllOnFocus(true)
         }
         val copy = Button(this).apply { text = "نسخ" }
         row.addView(et, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f))
@@ -145,7 +146,6 @@ class FloatingService : Service() {
                 getSystemService(ClipboardManager::class.java)
                     .setPrimaryClip(ClipData.newPlainText("number", num))
                 Toast.makeText(this, "اتنسخ: $num", Toast.LENGTH_SHORT).show()
-                et.setText("")
             }
             (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
                 .hideSoftInputFromWindow(et.windowToken, 0)
